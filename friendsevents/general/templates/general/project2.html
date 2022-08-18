@@ -1,0 +1,130 @@
+{% extends 'general/base.html' %}
+{% load static %}
+
+{% block context %}
+
+{% if video != 'None' %}
+		<div class="border-bot">
+<video class="main-video video-background header-check"
+       preload="auto" autoplay="autoplay" loop="true" muted="muted">
+    <source src="/media/{{ video }}" type="video/mp4">
+</video>
+</div>
+{% else %}
+		<div class="header-check" style="display:none"></div>
+{% endif %}
+
+
+
+{% autoescape off %}
+<div class="container ">
+  <div class="row d-flex justify-content-center">
+
+    <div class="col-12 px-5 pt-5 mt-5">
+        <div class="text-center">
+            <h5 class="PlayfairDisplay ">{{ name }}</h5>
+        </div>
+    </div>
+
+    <div class="col-12 px-5" style="max-width:800px;">
+        <div class="text-left project-description">
+            <h5 class="font-Mont project-description">{{ description }}</h5>
+        </div>
+    </div>
+
+
+  </div>
+</div>
+{% endautoescape %}
+
+<div class="spacer-big"></div>
+
+<div class="modal fade" id="modal" tabindex="-1"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content unselectable">
+                <div style="position: absolute;top: 48%;left: -7%;" onclick="next()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="white" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+                        <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
+                    </svg>
+                </div>
+
+                <div style="position: absolute;top: 48%; right: -7%;" onclick="back()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="white" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                        <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+                    </svg>
+                </div>
+
+                <img id="image" src="" class="img-fluid" alt="...">
+            </div>
+      </div>
+</div>
+
+
+
+<div class="container">
+    {% for r in rows %}
+        <div class="row">
+            {% if r.right != 'None' %}
+            <div class="col-md-6 col-sm-12 col-12 pb-3 pr-md-3 pl-md-0 ">
+                <a data-bs-toggle="modal" data-bs-target="#modal" onclick="selectPhoto({{ r.l_id }})">
+                    <div class="aspect-ratio-box">
+                        <img src="/media/{{ r.left}}" class="img-fluid" alt="...">
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-6 col-sm-12 pb-3 pl-md-3 pr-md-0">
+              <a data-bs-toggle="modal" data-bs-target="#modal" onclick="selectPhoto({{ r.r_id }})">
+                  <div class="aspect-ratio-box">
+                      <img src="/media/{{ r.right }}" class="img-fluid" alt="...">
+                  </div>
+              </a>
+            </div>
+            {% else %}
+             <div class="col-md-6 col-sm-12 col-12 pb-3 pr-md-3 pl-md-0 ">
+                <a data-bs-toggle="modal" data-bs-target="#modal" onclick="selectPhoto({{ r.l_id }})">
+                    <div class="aspect-ratio-box">
+                        <img src="/media/{{ r.left}}" class="img-fluid" alt="...">
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-6 col-sm-12 pb-sm-3 pl-md-3 pr-md-0"></div>
+            {% endif %}
+        </div>
+	{% endfor %}
+</div>
+
+<script>
+    let array = [
+        {% for p in photos %}
+        '{{p}}',
+        {% endfor %}
+    ];
+
+    let currentId = 0;
+    function selectPhoto(id) {
+        let item = document.querySelector('#image');
+        item.src = array[id];
+        currentId = id;
+    }
+    function next() {
+        if(currentId != array.length - 1 ){
+            selectPhoto(currentId + 1);
+        }
+        else{
+            selectPhoto(0);
+        }
+    }
+
+    function back() {
+        if(currentId != 0 ){
+            selectPhoto(currentId - 1);
+        }
+        else{
+            selectPhoto(array.length - 1);
+        }
+    }
+</script>
+{% endblock context %}

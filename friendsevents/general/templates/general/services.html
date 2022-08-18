@@ -1,0 +1,77 @@
+{% extends 'general/base.html' %}
+{% load static %}
+
+{% block context %}
+
+
+<section data-speed="0.6" style="height: 490.5px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 0;">
+<div class="parallax-content" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;
+ z-index: -1; overflow: hidden;">
+    <div class="parallax-image"
+         style="background: url(&quot;https://www.dotmotions.ae/wp-content/uploads/2018/07/ser.jpg&quot;)
+         center center / cover; width: 100%; height: 602px; position: absolute; top: -35.5px;
+         transform: matrix(1, 0, 0, 1, 0, 0);"></div>
+</div>
+</section>
+
+<div class="header-check" style="width: 100%; height: 490.5px; overflow: hidden;">
+    <div class="spacer-big"></div>
+<div class="container ">
+  <div class="row d-flex justify-content-center">
+
+<div class="col-12 mt-5 ">
+      <div class="text-left">
+          <h5 class="PlayfairDisplay-services text-white">В этих <strong>услугах</strong> <br>
+              мы <strong>лучшие.</strong></h5>
+        </div>
+     </div>
+<div class="col-12 mt-5 ">
+      <div class="text-left">
+            <span class="font-Mont-services-header text-white">Ваше удовлетворение значит для нас все. <br>
+Мы понимаем, что интересный сценарий и красивый вид - это лишь малая часть общей картины.</span>
+        </div>
+     </div>
+        </div>
+      </div>
+
+</div>
+
+
+<div style=" background-color: white;position: relative;
+  width: 100%;box-sizing: border-box;">
+
+
+<div class="container ">
+
+    <div class="row d-flex justify-content-center">
+
+        {% for s in services %}
+    <div class="col-6 col-sm-4 pt-5 mt-3 d-flex flex-column align-items-center ">
+        <img src="/media/{{ s.photo.name }}" class="img-fluid mt-3" alt="...">
+        <div class="text-center pt-4 employee-name">{{ s.name }}</div>
+        <div class="text-center pb-3 pt-3 font-Mont-services-header">{{ s.description }}</div>
+    </div>
+        {% endfor %}
+      </div>
+</div>
+
+
+
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="text-center">
+            <h5 class="PlayfairDisplay ">{{ name }}</h5>
+        </div>
+
+    </div>
+</div>
+
+</div>
+
+
+
+{% endblock context %}

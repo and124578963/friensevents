@@ -1,0 +1,92 @@
+{% extends 'general/base.html' %}
+{% load static %}
+
+{% block context %}
+
+{% if video != 'None' %}
+		<div class="border-bot">
+<video class="main-video video-background header-check"
+       preload="auto" autoplay="autoplay" loop="true" muted="muted">
+    <source src="/media/{{ video }}" type="video/mp4">
+</video>
+</div>
+{% else %}
+		<div class="header-check" style="display:none"></div>
+{% endif %}
+
+
+
+{% autoescape off %}
+<div class="container ">
+  <div class="row d-flex justify-content-center">
+
+    <div class="col-12 px-5 pt-5 mt-5">
+        <div class="text-center">
+            <h5 class="PlayfairDisplay ">{{ name }}</h5>
+        </div>
+    </div>
+
+    <div class="col-12 px-5 pb-5 mb-3" style="max-width:800px;">
+        <div class="text-left project-description">
+            <h5 class="font-Mont project-description">{{ description }}</h5>
+        </div>
+    </div>
+
+
+  </div>
+</div>
+{% endautoescape %}
+
+
+<div class="container">
+    {% for r in rows %}
+        <div class="row">
+            {% if r.right != 'None' %}
+            <div class="col-6 pt-3 pr-3 pl-0">
+                <a data-bs-toggle="modal" data-bs-target="#left{{ forloop.counter }}"><img src="/media/{{ r.left}}" class="img-fluid" alt="..."></a>
+            </div>
+        <div class="modal fade" id="left{{ forloop.counter }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+               <img src="/media/{{ r.left}}" class="img-fluid" alt="...">
+            </div>
+          </div>
+        </div>
+
+
+            <div class="col-6 pt-3 pl-3 pr-0">
+              <a data-bs-toggle="modal" data-bs-target="#right{{ forloop.counter }}"><img src="/media/{{ r.right }}" class="img-fluid" alt="..."></a>
+            </div>
+<div class="modal fade" id="right{{ forloop.counter }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+       <img src="/media/{{ r.right}}" class="img-fluid" alt="...">
+    </div>
+  </div>
+</div>
+
+
+
+            	{% else %}
+             <div class="col-6 pt-3 pr-3 pl-0">
+                <a data-bs-toggle="modal" data-bs-target="#left{{ forloop.counter }}"><img src="/media/{{ r.left}}" class="img-fluid" alt="..."></a>
+            </div>
+<div class="modal fade" id="left{{ forloop.counter }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+       <img src="/media/{{ r.left}}" class="img-fluid" alt="...">
+    </div>
+  </div>
+</div>
+               <div class="col-6 pt-3 pr-3 pl-0">
+            </div>
+            	{% endif %}
+          </div>
+	{% endfor %}
+</div>
+
+
+
+
+
+{% endblock context %}

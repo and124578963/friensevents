@@ -1,0 +1,78 @@
+{% extends 'general/base.html' %}
+{% load static %}
+
+{% block context %}
+
+<div class="border-bot">
+<video class="main-video video-background header-check"
+       preload="auto" autoplay="autoplay" loop="true" muted="muted">
+    <source src="/media/general_video.mp4" type="video/mp4">
+</video>
+</div>
+
+<div class="spacer-big"></div>
+<div class="container">
+  <div class="row">
+        <div class="col-12">
+           <div class="text-center"> <h2 class="PlayfairDisplay"><strong>Friends Events</strong> - группа дружных профессионалов.</h2></div>
+        </div>
+        <div class="col-12">
+           <div class="text-center mt-1"><h2 class="PlayfairDisplay">Мы используем хорошее настроение и опыт, чтобы <strong>рассказать историю.</strong></h2></div>
+        </div>
+        <div class="col-12">
+            <div class="text-center my-sm-5 my-4 pb-3"><h5 class="Mont text-uppercase">Наши лучшие работы</h5></div>
+        </div>
+  </div>
+</div>
+
+<div class="container">
+    {% for r in rows %}
+        <div class="row">
+            {% if r.right.name != 'None' %}
+            <div class="col-md-6 col-sm-12 col-12 pt-sm-3 pr-md-3 pl-md-0">
+                <a href="/{{ r.left.slug }}">
+                    <div class="aspect-ratio-box">
+                        <img src="/media/{{ r.left.photo }}" class="img-fluid" alt="...">
+                    </div>
+                </a>
+              <a href="/{{ r.left.slug }}"><p class="text-uppercase mt-sm-2 pt-2 Mont-block">{{ r.left.name }}</p></a>
+            </div>
+            <div class="col-md-6 col-sm-12 pt-sm-3 pl-md-3 pr-md-0">
+              <a href="/{{ r.right.slug }}">
+                  <div class="aspect-ratio-box">
+                      <img src="/media/{{ r.right.photo }}" class="img-fluid" alt="...">
+                  </div>
+              </a>
+              <a href="/{{ r.right.slug }}"><p class="text-uppercase mt-sm-2 pt-2 Mont-block">{{ r.right.name }}</p></a>
+            </div>
+            	{% else %}
+            <div class="col-md-6 col-sm-12 pt-sm-3 pr-md-3 pl-md-0">
+              <a href="/{{ r.left.slug }}">
+                  <div class="aspect-ratio-box">
+                      <img src="/media/{{ r.left.photo }}" class="img-fluid" alt="...">
+                  </div>
+              </a>
+              <a href="/{{ r.left.slug }}"><p class="text-uppercase mt-sm-2 pt-2 Mont-block">{{ r.left.name }}</p></a>
+            </div>
+               <div class="col-md-6 col-sm-12 pt-sm-3 pr-md-3 pl-md-0">
+            </div>
+            	{% endif %}
+          </div>
+	{% endfor %}
+</div>
+
+
+
+<div class="container">
+  <div class="row">
+        <div class="col-12 mt-4 pt-3 mb-3">
+           <div class="text-center"> <span class="display-5 PlayfairDisplay">Лучшие компании доверяют нам!</span></div>
+        </div>
+
+        <div class="col-12 mt-4">
+          <img src="/media/companies2.png" class="img-fluid" alt="...">
+        </div>
+  </div>
+</div>
+
+{% endblock context %}

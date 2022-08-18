@@ -1,0 +1,62 @@
+{% extends 'general/base.html' %}
+{% load static %}
+
+{% block context %}
+<div class="header-check" style="display:none"></div>
+
+<div class="spacer-big"></div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-1"></div>
+
+    <div class="col-10 mb-5 px-3">
+        <div class="text-center"> <h2 class="PlayfairDisplay">
+        {{ description }}</h2>
+        </div>
+    </div>
+    <div class="col-1"></div>
+  </div>
+</div>
+
+
+
+<div class="container">
+    {% for r in rows %}
+        <div class="row">
+            {% if r.right.name != 'None' %}
+            <div class="col-md-6 col-sm-12 col-12 pt-sm-3 pr-md-3 pl-md-0 " >
+                <a href="{{ r.left.url }}" >
+                    <div class="aspect-ratio-box">
+                        <img src="/media/{{ r.left.photo }}" class="img-fluid" alt="...">
+                    </div>
+                </a>
+              <a href="{{ r.left.url }}" ><p class="text-uppercase mt-4 Mont-block" >{{ r.left.name }}</p></a>
+            </div>
+            <div class="col-md-6 col-sm-12 pt-sm-3 pl-md-3 pr-md-0">
+              <a href="{{ r.right.url }}">
+                  <div class="aspect-ratio-box">
+                      <img src="/media/{{ r.right.photo }}" class="img-fluid" alt="...">
+                  </div>
+              </a>
+              <a href="{{ r.right.url }}"><p class="text-uppercase mt-4 Mont-block">{{ r.right.name }}</p></a>
+            </div>
+            	{% else %}
+            <div class="col-md-6 col-sm-12 pt-sm-3 pr-md-3 pl-md-0">
+              <a href="{{ r.left.url }}">
+                  <div class="aspect-ratio-box">
+                      <img src="/media/{{ r.left.photo }}" class="img-fluid" alt="...">
+                  </div>
+              </a>
+              <a href="{{ r.left.url }}"><p class="text-uppercase mt-sm-2 pt-2 Mont-block">{{ r.left.name }}</p></a>
+            </div>
+               <div class="col-md-6 col-sm-12 pt-sm-3 pr-md-3 pl-md-0">
+            </div>
+            	{% endif %}
+          </div>
+	{% endfor %}
+</div>
+
+
+
+{% endblock context %}

@@ -1,0 +1,114 @@
+{% extends 'general/base.html' %}
+{% load static %}
+
+{% block context %}
+
+
+<section style="height: 530.5px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 0;">
+<div class="parallax-content" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;
+ z-index: -1; overflow: hidden;">
+    <div class="parallax-image"
+         style="background: url(&quot;https://www.dotmotions.ae/wp-content/uploads/2018/06/about-1-2.jpg&quot;)
+         center center / cover; width: 100%; height: 602px; position: absolute; top: -35.5px;
+         transform: matrix(1, 0, 0, 1, 0, 0);"></div>
+</div>
+</section>
+
+<div class="header-check" style="width: 100%; height: 530.5px; overflow: hidden;">
+    <div class="spacer-big"></div>
+    <div class="d-block d-sm-none">    <div class="spacer-big "></div></div>
+
+<div class="container ">
+  <div class="row d-flex justify-content-center">
+    <div class="col-12 mt-5 d-flex justify-content-center">
+        <img loading="lazy" src="{% static 'general/images/est.png' %}"
+             class="img-fluid" style="width:70px; height:70px;" alt="...">
+    </div>
+<div class="col-12 mt-5 d-flex justify-content-center">
+      <div class="text-center">
+            <h5 class="Mont text-uppercase text-white">ГДЕ СЛУЧАЕТСЯ МАГИЯ</h5>
+        </div>
+     </div>
+<div class="col-12 mt-3 d-flex justify-content-center">
+      <div class="text-center">
+            <h5 class="PlayfairDisplay text-white">Мы Event агентство в Москве, расскажем вашу историю по-другому.</h5>
+        </div>
+     </div>
+        </div>
+      </div>
+
+</div>
+
+
+<div style=" background-color: white;position: relative;
+  width: 100%;box-sizing: border-box;">
+
+
+<div class="container ">
+  <div class="row d-flex justify-content-center">
+
+    <div class="col-12 px-5 mt-5">
+        <div class="text-center">
+            <h5 class="PlayfairDisplay ">Future is old! <br>
+Innovative & striking digital solutions</h5>
+        </div>
+    </div>
+      </div>
+<div class="row d-flex justify-content-center">
+    <div class="col-6">
+        <div class="text-left project-description">
+            <p class="font-Mont project-description">At DOT Motions, we have the best experienced hands -thus we are the most preferred Dubai based Creative Agency. If you need innovative solutions for your digital business, we have the right answer for all your media</p>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="text-left project-description">
+            <p class="font-Mont project-description">needs. We have a workforce that is highly talented, passionately work-driven and that knows how to HELP YOU achieve your goals – right on time and within your budget.</p>
+        </div>
+    </div>
+
+  </div>
+
+
+
+    <div class="row d-flex justify-content-center">
+    <div class="col-12 px-5 pb-4 mt-3">
+        <div class="text-center">
+            <h5 class="PlayfairDisplay ">Наши дружные работники!</h5>
+        </div>
+    </div>
+      </div>
+
+
+    <div class="row d-flex justify-content-center">
+
+        {% for e in employee %}
+
+    <div class="col-sm-3 col-6">
+        <img src="/media/{{ e.photo.name }}" class="img-fluid" alt="...">
+        <div class="text-center pt-4 employee-name"><strong>{{ e.name }}</strong></div>
+        <div class="text-center pb-4 pt-3 employee-name" style="font-size:13px;line-height: 2vmin;">{{ e.post }}</div>
+    </div>
+        {% endfor %}
+      </div>
+</div>
+
+
+
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="text-center">
+            <h5 class="PlayfairDisplay ">{{ name }}</h5>
+        </div>
+
+    </div>
+</div>
+
+</div>
+
+
+
+{% endblock context %}

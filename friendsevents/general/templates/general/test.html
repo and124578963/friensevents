@@ -1,0 +1,32 @@
+{% extends 'reactives/base.html' %}
+
+{% load static %}
+
+{% block main %}
+
+{% endblock %}
+
+
+{% for m in menu %}
+
+
+	{% endfor %}
+
+
+<li><a href="{% url m.url_name %}">{{m.title}}</a></li>
+
+
+			{% if cat_selected == 'Отвердители' %}
+		<li class="selected">Отвердители</li>
+	{% else %}
+		<li><a href="{% url 'hardeners' %}">Отвердители</a></li>
+	{% endif %}
+
+
+{% if check_active %}
+{% block content %}
+{% endblock %}
+		{% else %}
+		<p>Для активации аккаунта производителя отправьте со своей корпоративной почты письмо по адресу and124578963@yandex.ru</p>
+
+		{% endif %}
