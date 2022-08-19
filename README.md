@@ -1,3 +1,3 @@
-Сайт для event агенства
-Языки: python, js, html, css
-Технологии: django, bootstrap
+Сайт для event агенства<br/>
+Языки: python, js, html, css<br/>
+Технологии: django, bootstrap<br/>
